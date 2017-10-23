@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/x264dll.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/x264.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/ffms.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/timecode.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/avs.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/raw.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/input.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/y4m.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/input.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/lavf.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/input/thread.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tools/checkasm.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/analyse.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/cavlc.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/analyse.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/macroblock.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/set.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/slicetype.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/macroblock.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/set.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/cabac.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/rdo.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/lookahead.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/encoder.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/me.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/me.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/ratecontrol.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/slicetype-cl.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/encoder/ratecontrol.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/mp4.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/mp4_lsmash.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/matroska_ebml.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/matroska_ebml.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/flv.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/output.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/flv_bytestream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/matroska.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/raw.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output/flv_bytestream.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/cl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/avisynth_c.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/stdint.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/getopt.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/cl_platform.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/getopt.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/avxsynth_c.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/inttypes.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extras/intel_dispatcher.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/filters.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/filters.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/source.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/cache.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/video.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/resize.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/depth.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/select_every.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/internal.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/video.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/fix_vfr_pts.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/internal.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/filters/video/crop.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SMP/common/oclobj.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SMP/config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SMP/x264_config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SMP/msvc/include/x264.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SMP/msvc/include/x264_config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/x264cli.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/vlc.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/opencl/x264-cl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/threadpool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/opencl.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/predict.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/deblock.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/cpu.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/cabac.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/macros.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/mc-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/quant-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/dct-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/deblock-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/pixel-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mips/predict-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/set.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/cpu.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/cabac.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/win32thread.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/macroblock.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/set.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/mc-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/util.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/x86/predict-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/frame.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/threadpool.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/frame.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mc.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/ppccommon.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/deblock.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/predict.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/quant.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/dct.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/pixel.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/ppc/mc.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/quant.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/win32thread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/osdep.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/common.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/common.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/dct.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/osdep.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/bitstream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/bitstream.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/rectangle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/asm-offsets.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/mc-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/asm-offsets.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/aarch64/predict-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/rectangle.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/opencl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/pixel.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/mc-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/dct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/pixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/quant.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/mc.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/arm/predict-c.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/macroblock.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/mvpred.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/predict.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/x264.h" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0/include" />
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed" />
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/x86_64-w64-mingw32/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0/include" />
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed" />
+          <root url="file://D:/Program Files (x86)/JetBrains/mingw-w64/mingw-w64/mingw64/x86_64-w64-mingw32/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
