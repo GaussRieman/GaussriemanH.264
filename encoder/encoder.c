@@ -2966,14 +2966,16 @@ reencode:
 				int b_radio;
 				
 				decide_text = decideTextBlock(h->mb.pic.p_fdec[0], FDEC_STRIDE, h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
-				escape_color_num = calcEscapeColor(text_encoder_context, p_source[0], p_source[1], p_source[2], FENC_STRIDE);
+				/*escape_color_num = calcescapecolor(text_encoder_context, p_source[0], p_source[1], p_source[2], fenc_stride);
 				if (text_block_num < 5)
 					b_radio = 30;
 				else
-					b_radio = 17;
+					b_radio = 17;*/
+
+				int t_bits = analyseTextCost(&p_source[0], &p_source[1], &p_source[2], 1, text_encoder_context);
 
 				//文字编码器占用bits大约为escape_color_num*15
-				if( decide_text && (mb_size>escape_color_num*b_radio) )
+				if( decide_text && (mb_size>t_bits) )
 				{				
 					//注意p_source1\2\3指针开始指向原始图, 大小需要为宏块, 函数结束将会指向解码结果
 					preProcessTextMB(text_encoder_context, &p_source[0], &p_source[1], &p_source[2]);
@@ -4213,6 +4215,15 @@ static int x264_encoder_frame_end( x264_t *h, x264_t *thread_current,
         h->stat.f_psnr_mean_y[h->sh.i_type]  += dur * pic_out->prop.f_psnr[0];
         h->stat.f_psnr_mean_u[h->sh.i_type]  += dur * pic_out->prop.f_psnr[1];
         h->stat.f_psnr_mean_v[h->sh.i_type]  += dur * pic_out->prop.f_psnr[2];
+
+		FILE *psnr_stats = fopen("./psnr.txt", "a+");
+		if (!psnr_stats)
+		{
+			perror("Open file wrong\n");
+		}
+		fprintf(psnr_stats, " PSNR Y:%5.2f U:%5.2f V:%5.2f, Average: %5.2f\n", pic_out->prop.f_psnr[0],
+			pic_out->prop.f_psnr[1], pic_out->prop.f_psnr[2], pic_out->prop.f_psnr_avg);
+		fclose(psnr_stats);
 
         snprintf( psz_message, 80, " PSNR Y:%5.2f U:%5.2f V:%5.2f", pic_out->prop.f_psnr[0],
                                                                     pic_out->prop.f_psnr[1],
