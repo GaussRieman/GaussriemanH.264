@@ -99,7 +99,7 @@ int nhgGenerateSmart_Ex(pixel *data, int stride,int length,int max_value) {
     }
     return nhg_block;
 }
-int decideTextBlock(pixel *p_dst, int stride_p_dst, pixel* p_src, int stride_p_src, int length){
+int decideTextBlock(pixel* p_src, int stride_p_src, int length){
     int mb_nhg_count = 0;
     int mb_nbc_count = 0;
     int ret_val = 0;

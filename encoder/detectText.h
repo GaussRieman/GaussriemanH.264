@@ -16,6 +16,6 @@ int nhgGenerateSmart_Ex(pixel *data, int stride, int length, int max_value);
 
 int nbcGenerateSmart_Ex(pixel*data, int stride, int length, int max);
 
-int decideTextBlock(pixel *p_dst, int stride_p_dst, pixel* p_src , int stride_p_src ,int length);
+int decideTextBlock(pixel* p_src , int stride_p_src ,int length);
 
 #endif //X264_0_148_R2795_1_DETECTTEXT_H

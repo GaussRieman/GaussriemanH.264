@@ -2965,7 +2965,7 @@ reencode:
 				int decide_text = 0;
 				int b_radio;
 				
-				decide_text = decideTextBlock(h->mb.pic.p_fdec[0], FDEC_STRIDE, h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
+				decide_text = decideTextBlock(h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
 				/*escape_color_num = calcescapecolor(text_encoder_context, p_source[0], p_source[1], p_source[2], fenc_stride);
 				if (text_block_num < 5)
 					b_radio = 30;
@@ -2973,7 +2973,7 @@ reencode:
 					b_radio = 17;*/
 
 				int t_bits = analyseTextCost(&p_source[0], &p_source[1], &p_source[2], 1, text_encoder_context);
-
+				
 				//文字编码器占用bits大约为escape_color_num*15
 				if( decide_text && (mb_size>t_bits) )
 				{				
@@ -3204,6 +3204,7 @@ cont:
     }
 
 	if (text_encoder_context->p_ktext_object->ktext_mb_count>0) {
+		//printf("t_cnt:%d\n", text_encoder_context->p_ktext_object->ktext_mb_count);
 		bs_align_0(&h->out.bs);
 		uint32_t end_text = h->out.bs.p - h->out.bs.p_start;
 		h->out.bs.p = h->out.bs.p_start + start;
