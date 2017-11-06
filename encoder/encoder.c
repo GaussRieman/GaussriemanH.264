@@ -2959,7 +2959,7 @@ reencode:
 #ifdef TEXT_ENABLE
 		if (h->mb.i_type == I_16x16 && mb_size>200)
 		{
-			if (!(h->fref[0][0] != NULL && (h->fref[0][0]->i_text_type[mb_xy]) == V_TEXT))
+			if (1)//!(h->fref[0][0] != NULL && (h->fref[0][0]->i_text_type[mb_xy]) == V_TEXT)
 			{
 				int escape_color_num = 0;
 				int decide_text = 0;
@@ -2972,11 +2972,15 @@ reencode:
 				else
 					b_radio = 17;*/
 
-				int t_bits = analyseTextCost(&p_source[0], &p_source[1], &p_source[2], 1, text_encoder_context);
+				int t_bits = analyseTextCost(p_source[0], p_source[1], p_source[2], 1, text_encoder_context);
 				
 				//文字编码器占用bits大约为escape_color_num*15
 				if( decide_text && (mb_size>t_bits) )
 				{				
+					FILE *text_stats = NULL;
+					fopen_s(&text_stats, "./text_stats.txt", "a+");
+					fprintf(text_stats, "mb_x: %d, mb_y: %d, origin: %d, plus: %d\n", i_mb_x, i_mb_y, mb_size, t_bits);
+					fclose(text_stats);
 					//注意p_source1\2\3指针开始指向原始图, 大小需要为宏块, 函数结束将会指向解码结果
 					preProcessTextMB(text_encoder_context, &p_source[0], &p_source[1], &p_source[2]);
 					h->mb.text_data = text_encoder_context->text_quan_para->quantized_image + (text_encoder_context->p_ktext_object->ktext_mb_count - 1) * XOR_STRIDE;
@@ -3205,12 +3209,16 @@ cont:
 
 	if (text_encoder_context->p_ktext_object->ktext_mb_count>0) {
 		//printf("t_cnt:%d\n", text_encoder_context->p_ktext_object->ktext_mb_count);
+		//printf("t_rdo_cnt:%d\n", text_encoder_context->p_ktext_object->t_cnt_rdo);
 		bs_align_0(&h->out.bs);
 		uint32_t end_text = h->out.bs.p - h->out.bs.p_start;
 		h->out.bs.p = h->out.bs.p_start + start;
 		bs_write32(&h->out.bs, (uint32_t)end_text - start - 4);
 		h->out.bs.p = h->out.bs.p_start + end_text;
+		int t_before = bs_pos(&h->out.bs);
 		encodeText(&h->out.bs, text_encoder_context);
+		int t_after = bs_pos(&h->out.bs);
+		int t_actural_bits = t_after - t_before;
 	}
 //	printf("frame=%d, text block count=%d, text bitstream length : %d  total_length:%d  |\n", h->fenc->i_frame, p_ktext_object->ktext_mb_count, length, h->stat.i_frame_size);
 
