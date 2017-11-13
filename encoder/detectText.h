@@ -11,6 +11,7 @@
 #define NGH_TH                                                                                         1
 #define NBC_TH0                                                                                      179
 #define NBC_TH1                                                                                      160
+#define TEXT_MB_HISTOGRAM_COMP_STRIDE																 256
 
 int nhgGenerateSmart_Ex(pixel *data, int stride, int length, int max_value);
 

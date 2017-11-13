@@ -2959,57 +2959,46 @@ reencode:
 #ifdef TEXT_ENABLE
 		if (h->mb.i_type == I_16x16 && mb_size>200)
 		{
-			if (1)//!(h->fref[0][0] != NULL && (h->fref[0][0]->i_text_type[mb_xy]) == V_TEXT)
-			{
-				int escape_color_num = 0;
-				int decide_text = 0;
-				int b_radio;
+			int escape_color_num = 0;
+			int decide_text = 0;
 				
-				decide_text = decideTextBlock(h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
-				/*escape_color_num = calcescapecolor(text_encoder_context, p_source[0], p_source[1], p_source[2], fenc_stride);
-				if (text_block_num < 5)
-					b_radio = 30;
-				else
-					b_radio = 17;*/
+			decide_text = decideTextBlock(h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
 
-				int t_bits = analyseTextCost(p_source[0], p_source[1], p_source[2], 1, text_encoder_context);
+			int t_bits = analyseTextCost(p_source[0], p_source[1], p_source[2], 1, text_encoder_context);
 				
-				//文字编码器占用bits大约为escape_color_num*15
-				if( decide_text && (mb_size>t_bits) )
-				{				
-					FILE *text_stats = NULL;
-					fopen_s(&text_stats, "./text_stats.txt", "a+");
-					fprintf(text_stats, "mb_x: %d, mb_y: %d, origin: %d, plus: %d\n", i_mb_x, i_mb_y, mb_size, t_bits);
-					fclose(text_stats);
-					//注意p_source1\2\3指针开始指向原始图, 大小需要为宏块, 函数结束将会指向解码结果
-					preProcessTextMB(text_encoder_context, &p_source[0], &p_source[1], &p_source[2]);
-					h->mb.text_data = text_encoder_context->text_quan_para->quantized_image + (text_encoder_context->p_ktext_object->ktext_mb_count - 1) * XOR_STRIDE;
-					text_block_num++;
-					h->mb.is_text = 1;
-					h->mb.i_type = V_TEXT;
-					h->mb.i_partition = D_16x16;
-					h->mb.b_skip_mc = 1;
+			//t_bits由线性规划预测，目前没有考虑失真的影响，只考虑编码比特数
+			if( decide_text && (mb_size>t_bits) )
+			{				
+				FILE *text_stats = NULL;
+				fopen_s(&text_stats, "./text_stats.txt", "a+");
+				fprintf(text_stats, "mb_x: %4d, mb_y: %4d, origin: %4d, plus: %4d\n", i_mb_x, i_mb_y, mb_size, t_bits);
+				fclose(text_stats);
+				//注意p_source1\2\3指针开始指向原始图, 大小需要为宏块, 函数结束将会指向解码结果
+				preProcessTextMB(text_encoder_context, &p_source[0], &p_source[1], &p_source[2]);
+				h->mb.text_data = text_encoder_context->text_quan_para->quantized_image + (text_encoder_context->p_ktext_object->ktext_mb_count - 1) * XOR_STRIDE;
+				text_block_num++;
+				h->mb.is_text = 1;
+				h->mb.i_type = V_TEXT;
+				h->mb.i_partition = D_16x16;
+				h->mb.b_skip_mc = 1;
 
-					//回填解码内容
-					for (int p = 0; p < 3; p++)
-					{
-						//需要完成文字块编解码功能，并将解码结果回填到h->mb.pic.p_fdec
-						h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, p_source[p], FENC_STRIDE, 16);
-						//此处填入原始值，是为了防止由于文字编码残差，导致的反复编码问题，但是会使得周边宏块的预测编码不准确, 误差累积
-						//h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, h->mb.pic.p_fenc[p], FENC_STRIDE, 16);
-					}
-
-					//返回到该宏块码流开头重写宏块类型
-					h->out.bs.i_bits_encoded = mb_start_i_bits_encoded;
-					h->out.bs.i_left = mb_start_i_left;
-					h->out.bs.cur_bits = mb_start_cur_bits;
-					h->out.bs.p = mb_start_p;
-					//写mb_type, 在码流中mb_type为43-Text, 44-MV, 45-LBC, 46-UBC
-					bs_write_ue(&h->out.bs, 43);
-
-					total_bits = bs_pos(&h->out.bs) + x264_cabac_pos(&h->cabac);
-					mb_size = total_bits - mb_spos;
+				//回填解码内容
+				for (int p = 0; p < 3; p++)
+				{
+					//需要完成文字块编解码功能，并将解码结果回填到h->mb.pic.p_fdec
+					h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, p_source[p], FENC_STRIDE, 16);
 				}
+
+				//返回到该宏块码流开头重写宏块类型
+				h->out.bs.i_bits_encoded = mb_start_i_bits_encoded;
+				h->out.bs.i_left = mb_start_i_left;
+				h->out.bs.cur_bits = mb_start_cur_bits;
+				h->out.bs.p = mb_start_p;
+				//写mb_type, 在码流中mb_type为43-Text, 44-MV, 45-LBC, 46-UBC
+				bs_write_ue(&h->out.bs, 43);
+
+				total_bits = bs_pos(&h->out.bs) + x264_cabac_pos(&h->cabac);
+				mb_size = total_bits - mb_spos;
 			}
 		}
 #endif
