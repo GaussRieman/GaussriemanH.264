@@ -2868,41 +2868,10 @@ static intptr_t x264_slice_write( x264_t *h )
 			x264_macroblock_cache_mv_ptr(h, 0, 0, 4, 4, 0, h->mb.cache.pskip_mv);
 		}
 #endif
-		if (h->fenc->i_frame == 12 && i_mb_x == 116)
-			h->mb.i_type = h->mb.i_type;
 
         /* encode this macroblock -> be careful it can change the mb type to P_SKIP if needed */
 reencode:
-		//开始进行MC\DCT变换\熵编码
-		if (h->mb.i_type == V_LBC)				//LBC块
-		{
-			for (int p = 0; p < 3; p++)
-			{
-				pixel *dec_source = h->fdec->plane[p] + i_mb_y * 16 * p_current_frame->stride + (i_mb_x-1) * 16;
-				h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, dec_source, p_current_frame->stride, 16);
-			}
-		}
-		else if (h->mb.i_type == V_UBC)			//UBC
-		{
-			for (int p = 0; p < 3; p++)
-			{
-				pixel *dec_source = h->fdec->plane[p] + (i_mb_y - 1) * 16 * p_current_frame->stride + i_mb_x * 16;
-				h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, dec_source, p_current_frame->stride, 16);
-			}
-		}
-		else if (h->mb.i_type == V_TEXT)		//TEXT块
-		{
-			for (int p = 0; p < 3; p++)
-			{
-				//需要完成文字块编解码功能，并将解码结果回填到h->mb.pic.p_fdec
-//				h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, p_source[p], FENC_STRIDE, 16);
-				//此处填入原始值，是为了防止由于文字编码残差，导致的反复编码问题，但是会使得周边宏块的预测编码不准确, 误差累积
-				h->mc.copy[PIXEL_16x16](h->mb.pic.p_fdec[p], FDEC_STRIDE, h->mb.pic.p_fenc[p], FENC_STRIDE, 16);
-			}
-
-		}
-		else
-			x264_macroblock_encode(h);
+		x264_macroblock_encode(h);
 
         if( h->param.b_cabac )
         {
