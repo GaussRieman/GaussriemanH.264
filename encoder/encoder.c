@@ -2929,14 +2929,14 @@ reencode:
 		if (h->mb.i_type == I_16x16 && mb_size>200)
 		{
 			int escape_color_num = 0;
-			int decide_text = 0;
+			int is_text_block = 0;
 				
-			decide_text = decideTextBlock(h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
+			is_text_block = decideTextBlock(h->mb.pic.p_fenc[0], FENC_STRIDE, 16);
 
 			int t_bits = analyseTextCost(p_source[0], p_source[1], p_source[2], 1, text_encoder_context);
 				
 			//t_bits由线性规划预测，目前没有考虑失真的影响，只考虑编码比特数
-			if( decide_text && (mb_size>t_bits) )
+			if(is_text_block && (mb_size > t_bits) )
 			{				
 				FILE *text_stats = NULL;
 				fopen_s(&text_stats, "./text_stats.txt", "a+");
@@ -4182,7 +4182,8 @@ static int x264_encoder_frame_end( x264_t *h, x264_t *thread_current,
         h->stat.f_psnr_mean_y[h->sh.i_type]  += dur * pic_out->prop.f_psnr[0];
         h->stat.f_psnr_mean_u[h->sh.i_type]  += dur * pic_out->prop.f_psnr[1];
         h->stat.f_psnr_mean_v[h->sh.i_type]  += dur * pic_out->prop.f_psnr[2];
-
+      //记录每帧psnr值
+/*
 		FILE *psnr_stats = fopen("./psnr.txt", "a+");
 		if (!psnr_stats)
 		{
@@ -4191,7 +4192,7 @@ static int x264_encoder_frame_end( x264_t *h, x264_t *thread_current,
 		fprintf(psnr_stats, " PSNR Y:%5.2f U:%5.2f V:%5.2f, Average: %5.2f\n", pic_out->prop.f_psnr[0],
 			pic_out->prop.f_psnr[1], pic_out->prop.f_psnr[2], pic_out->prop.f_psnr_avg);
 		fclose(psnr_stats);
-
+*/
         snprintf( psz_message, 80, " PSNR Y:%5.2f U:%5.2f V:%5.2f", pic_out->prop.f_psnr[0],
                                                                     pic_out->prop.f_psnr[1],
                                                                     pic_out->prop.f_psnr[2] );

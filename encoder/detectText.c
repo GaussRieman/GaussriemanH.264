@@ -173,16 +173,6 @@ int nhgGenerateSmart_Ex(pixel *data, int stride,int length,int max_value) {
                 ++nhg_block;
                 continue;
             }
-            grads = abs(*p_data_tmp - *(p_data_tmp - stride));
-            if (grads > NGH_DIFF) {
-                ++nhg_block;
-                continue;
-            }
-            grads = abs(*p_data_tmp - *(p_data_tmp - 1));
-            if (grads > NGH_DIFF) {
-                ++nhg_block;
-                continue;
-            }
         }
         p_data_tmp += stride_diff;
     }
@@ -192,8 +182,12 @@ int decideTextBlock(pixel* p_src, int stride_p_src, int length){
     int mb_nhg_count = 0;
     int mb_nbc_count = 0;
     int ret_val = 0;
+	mb_nhg_count = nhgGenerateSmart_Ex(p_src, stride_p_src, length, NGH_TH);
+	if (mb_nhg_count < 4)
+	{
+		return 0;
+	}
     mb_nbc_count = nbcGenerater(p_src, stride_p_src, length, length);
-    mb_nhg_count = nhgGenerateSmart_Ex(p_src, stride_p_src, length, NGH_TH);
     if (mb_nbc_count > 160) {
         ret_val = 1;
         if (mb_nhg_count < 40) {
